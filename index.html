@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vinted Studio Pro</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Vinted Studio">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<script>
+  /* ====== HIER EINTRAGEN (Schritt 6 der Anleitung) ====== */
+  window.VSP_CONFIG = {
+    workerUrl: "" // z. B. "https://vinted-studio.deinname.workers.dev"
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: {
+      bg: "rgb(var(--bg) / <alpha-value>)", card: "rgb(var(--card) / <alpha-value>)", ink: "rgb(var(--ink) / <alpha-value>)",
+      muted: "rgb(var(--muted) / <alpha-value>)", line: "rgb(var(--line) / <alpha-value>)", soft: "rgb(var(--soft) / <alpha-value>)",
+      accent: "rgb(var(--ink) / <alpha-value>)", "accent-soft": "rgb(var(--soft) / <alpha-value>)"
+    },
+    fontFamily: {
+      display: ["Geist", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
+      sans: ["Geist", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "sans-serif"]
+    }
+  } }
+};
+</script>
+<style>
+:root { --bg: 255 255 255; --card: 255 255 255; --ink: 0 0 0; --muted: 128 128 128; --line: 232 232 232; --soft: 244 244 244;
+  box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: 0 0 0; --card: 20 20 20; --ink: 255 255 255; --muted: 140 140 140; --line: 44 44 44; --soft: 22 22 22; color-scheme: dark; } }
+:root[data-theme="dark"] { --bg: 0 0 0; --card: 20 20 20; --ink: 255 255 255; --muted: 140 140 140; --line: 44 44 44; --soft: 22 22 22; color-scheme: dark; }
+html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+body { margin: 0; min-height: 100%; background: rgb(var(--bg)); color: rgb(var(--ink)); font-family: Geist, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; letter-spacing: -0.005em; }
+img { max-width: 100%; }
+input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; }
+.tile { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; will-change: transform; }
+.tile:hover img { transform: scale(1.03); }
+.tile img { transition: transform 400ms cubic-bezier(.2,.8,.2,1); }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.anim-rise { animation: rise 700ms cubic-bezier(.2,.8,.2,1) both; animation-delay: var(--d, 0ms); }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.anim-fade { animation: fade 200ms ease both; }
+@keyframes sheet { from { transform: translateY(24px); opacity: .6; } to { transform: none; opacity: 1; } }
+.anim-sheet { animation: sheet 320ms cubic-bezier(.2,.8,.2,1) both; }
+.tile-in { animation: rise 500ms cubic-bezier(.2,.8,.2,1) both; }
+@keyframes shim { from { background-position: 150% 0; } to { background-position: -50% 0; } }
+.shimmer { background: linear-gradient(100deg, transparent 20%, rgb(var(--ink) / 0.07) 50%, transparent 80%) 0 0 / 200% 100%, rgb(var(--soft) / 0.55); animation: shim 1.3s linear infinite; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js"></script>
+<script>window.react = window.React;</script>
+<script src="https://cdn.jsdelivr.net/npm/lucide-react@0.383.0/dist/umd/lucide-react.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.26.4/babel.min.js"></script>
+<!-- Der eigentliche App-Code steht in app.jsx – dort kannst du alles bearbeiten. -->
+<script type="text/babel" data-presets="react" src="app.jsx"></script>
+</body>
+</html>
